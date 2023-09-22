@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: rgb(233, 245, 233);
+    background: linear-gradient(90deg, rgba(233, 245, 233, 1) 50%, rgba(199, 231, 199, 1) 72%, rgba(179, 238, 179, 1) 93%);
+    height: calc(100vh - 164px);
+    font-family: 'Prata', serif;
+}
+
+.logo-font {    
+    font-family: 'Prata', serif;
+    color: #26683F;
+}
+
+#logo {
+    font-family: 'Dancing Script', cursive;
+    color: #26683F;
+    font-size: large;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
