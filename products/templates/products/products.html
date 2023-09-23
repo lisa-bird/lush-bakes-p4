@@ -24,7 +24,7 @@
                 {% for product in products %}
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-2">
                         <div class="card h-100 border-1">
-                            <a href="">
+                            <a href="{% url 'product_description' product.id %}">
                                 <img  class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                             </a>
                             <div class="card-body pb-0">
