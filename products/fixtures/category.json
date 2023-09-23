@@ -1,0 +1,51 @@
+[
+    {
+        "pk": 1,
+        "model": "products.category",
+        "fields": {
+            "name": "birthday_cake",
+            "friendly_name": "Birthday Cake"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.category",
+        "fields": {
+            "name": "anniversay_cake",
+            "friendly_name": "Anniversary Cake"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.category",
+        "fields": {
+            "name": "cupcakes",
+            "friendly_name": "Cupcakes"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.category",
+        "fields": {
+            "name": "cookie_cake",
+            "friendly_name": "Cookie Cake"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.category",
+        "fields": {
+            "name": "treat_boxes",
+            "friendly_name": "Treat Boxes"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.category",
+        "fields": {
+            "name": "baby_shower",
+            "friendly_name": "Baby Shower"
+        }
+    }
+]
+    

@@ -24,14 +24,14 @@ body {
     width: fit-content;
 }
 
-/* Slightly larger container on xl screens */
+/* Slightly larger container on xl screens
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
     }
 }
 
-/* fixed top navbar only on medium and up */
+fixed top navbar only on medium and up 
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -44,4 +44,10 @@ body {
     .header-container {
         padding-top: 164px;
     }
-}
+}*/
+ @media (max-width: 767px) {
+     .main-logo-link h2 {
+         font-size: 1.5rem;
+         /* Adjust the font size as needed */
+     }
+ }
