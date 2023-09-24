@@ -34,6 +34,10 @@ body {
     object-fit: cover;
 }
 
+a .update-link,
+a .remove-item {
+    cursor: pointer;
+}
 
 /* fixed top navbar only on medium and up  */
 @media (min-width: 992px) {
