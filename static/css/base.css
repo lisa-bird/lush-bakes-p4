@@ -4,19 +4,22 @@ html {
 
 body {
     background: rgb(233, 245, 233);
-    background: linear-gradient(90deg, rgba(233, 245, 233, 1) 50%, rgba(199, 231, 199, 1) 72%, rgba(179, 238, 179, 1) 93%);
+    background: linear-gradient(90deg,
+            rgba(233, 245, 233, 1) 50%,
+            rgba(199, 231, 199, 1) 72%,
+            rgba(179, 238, 179, 1) 93%);
     height: calc(100vh - 164px);
-    font-family: 'Prata', serif;
+    font-family: "Prata", serif;
 }
 
-.logo-font {    
-    font-family: 'Prata', serif;
-    color: #26683F;
+.logo-font {
+    font-family: "Prata", serif;
+    color: #26683f;
 }
 
 #logo {
-    font-family: 'Dancing Script', cursive;
-    color: #26683F;
+    font-family: "Dancing Script", cursive;
+    color: #26683f;
     font-size: large;
 }
 
@@ -28,18 +31,9 @@ body {
     height: auto;
     aspect-ratio: 1/1;
     object-fit: cover;
-    
-   
 }
 
-/* Slightly larger container on xl screens
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
-    }
-}
-
-fixed top navbar only on medium and up 
+/* fixed top navbar only on medium and up  */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -52,10 +46,20 @@ fixed top navbar only on medium and up
     .header-container {
         padding-top: 164px;
     }
-}*/
- @media (max-width: 767px) {
-     .main-logo-link h2 {
-         font-size: 1.5rem;
-         /* Adjust the font size as needed */
-     }
- }
+}
+
+@media (max-width: 767px) {
+    .main-logo-link h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
+    }
+}

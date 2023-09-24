@@ -10,38 +10,55 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col text-center mt-3">
-            <h2>Bakes</h2>
-            <hr class="w-50 mb-1">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center mt-10">
+                <h2>Bakes</h2>
+                <hr class="w-50 mb-1">
+            </div>
         </div>
-    </div>
+        <div>
+            <ul class="navbar-nav w-auto mx-auto">
+                <li class="nav-item dropdown">
+                    <a class="logo-font btn btn-light font-weight-bold nav-link text-dark mr-5" href="#" id="all-products-link"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filter
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                        <a href="{% url 'products' %}?category=cupcakes" class="dropdown-item">Cupcakes</a>
+                        <a href="{% url 'products' %}?category=birthday_cake" class="dropdown-item ">Birthday Cakes</a>
+                        <a href="{% url 'products' %}?category=anniversay_cake" class="dropdown-item ">Anniversary Cakes</a>
+                        <a href="{% url 'products' %}?category=cookie_cake" class="dropdown-item ">Cookie Cakes</a>
+                        <a href="{% url 'products' %}" class="dropdown-item">All Bakes</a>
+                    </div>
+                </li>
+            </ul>
+        </div>    
     
-     <div class="product-container">
-            <div class="row mt-1 mb-2"></div> 
-            <div class="row">
-                {% for product in products %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-2">
-                        <div class="card h-100 border-1">
-                            <a href="{% url 'product_description' product.id %}">
-                                <img  class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                            </a>
-                            <div class="card-body pb-0">
-                                <p class="mb-0">{{ product.name }}</p>
-                            </div>
-                            <div class="card-footer bg-white pt-0 border-0 text-left">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+        <div class="product-container">
+            <div class="row mt-1 mb-2 mt-3"></div> 
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-2 ">
+                            <div class="card h-100 border-1">
+                                <a href="{% url 'product_description' product.id %}">
+                                    <img  class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                </a>
+                                <div class="card-body pb-0">
+                                    <p class="mb-0">{{ product.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
 </div>
 {% endblock %}
