@@ -27,11 +27,13 @@ body {
     width: fit-content;
 }
 
+
 .card .card-img-top {
     height: auto;
     aspect-ratio: 1/1;
     object-fit: cover;
 }
+
 
 /* fixed top navbar only on medium and up  */
 @media (min-width: 992px) {
