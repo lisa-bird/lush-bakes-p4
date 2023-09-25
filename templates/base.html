@@ -68,12 +68,12 @@
                     </div>
                     <!--Account/login dropdown-->
                     <div class="col-lg-3 col-md-6 text-end ">
-                        <ul class="list-inline list-unstyled text-center text-lg-right my-0 ">
+                        <ul class="list-inline list-unstyled text-center text-lg-right my-0 p-1">
                             <li class="list-inline-item dropdown">
                                 <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <div class="text-center">
-                                        <div><i class="fas fa-user fa-lg"></i></div>
+                                        <div><i class="fa-regular fa-user fa-lg"></i></div>
                                         <p class="my-0">My Account</p>
                                     </div>
                                 </a>
@@ -95,7 +95,7 @@
                                 <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                                     href="{% url 'view_bag' %}">
                                     <div class="text-center">
-                                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                        <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                                         <p class="my-0">
                                             {% if grand_total %} £ {{ grand_total|floatformat:2 }}
                                             {% else %}
@@ -112,14 +112,23 @@
     </header>
 
     {% if messages %}
-    <div class="message-container"></div>
+    <div class="message-container">
+        {% for message in messages %}
+            {% include 'includes/toasts/toast_success.html' %}
+        {% endfor%}
+    </div>
     {% endif %} 
+
     {% block page_header %} 
     {% endblock %} 
+
     {% block content %} 
     {% endblock %} 
     
     {% block postloadjs %} 
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
     {% endblock %}
   </body>
 </html>

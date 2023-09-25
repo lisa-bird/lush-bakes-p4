@@ -34,11 +34,33 @@ body {
     object-fit: cover;
 }
 
-a .update-link,
-a .remove-item {
+#amend-link {
     cursor: pointer;
+    text-decoration: none;
+}
+.delete-link {
+    cursor: pointer;
+    float: right;
+    text-decoration: none;
 }
 
+input::-webkit-
+outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+}
+.my-toast {
+    overflow: visible;    
+}
+.toast-top {
+    height: 4px;
+}
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 2px;
+    z-index: 99999999999;
+}
 /* fixed top navbar only on medium and up  */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
