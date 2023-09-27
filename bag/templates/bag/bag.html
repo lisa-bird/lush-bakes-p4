@@ -47,7 +47,7 @@
                     </td>
                     <td class="py-1 w-25">
                         <!-- Quantity amend/ delete form -->
-                        <form class="form update-form" action="" method="POST">
+                        <form class="form update-form" action="{% url 'amend_quantity' item.item_id %}" method="POST">
                           {% csrf_token %}
                             <div class="form-group">
                                 <div class="input-group">
@@ -73,8 +73,8 @@
                                 </div>
                             </div>
                         </form>
-                         <!-- <a class="text-info amend-link" id=""><small>Amend</small></a> -->
-                       <!-- <a class="delete-item text-danger" id="delete_{{ item.item_id}}"><small>Delete</small></a> -->
+                         <a class="text-info" id="amend-link"><small>Amend</small></a>
+                         <a class="delete-link text-danger" id="delete_{{ item.item_id}}"><small>Delete</small></a>
                     </td>
                     <td class="py-1">
                         <p class="my-0">£ {{ item.product.price }}</p>
@@ -126,12 +126,23 @@
 {% include 'products/includes/quantity_script.html' %} 
 
 <script type="text/javascript">
-    // amend quantity on click
-    $('.amend_link').click(function(e) {
-        var form = $(this).prev('.update_form');
-        form.submit();
-    })
-// need a script to change quantity when amend or delete is clicked
+    // Amend quantity when clicked
+        $('#amend-link').click(function (e) {
+            var form = $(this).prev('.update-form');            
+            form.submit();
+        });
+
+        // Delete item and reload the page when clicked
+        $('.delete-link').click(function (e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('delete_')[1];
+            var url = `/bag/delete/${itemId}`;
+            var data = { 'csrfmiddlewaretoken': csrfToken };
+
+            $.post(url, data, function () {
+                location.reload();
+            });
+        });
 </script>
 
 {% endblock %}

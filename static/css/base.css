@@ -44,11 +44,11 @@ body {
     text-decoration: none;
 }
 
-input::-webkit-
-outer-spin-button,
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     display: none;
 }
+
 .my-toast {
     overflow: visible;    
 }
