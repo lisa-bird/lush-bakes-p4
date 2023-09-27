@@ -1,5 +1,5 @@
 from django import forms
-from .models import order
+from .models import Order
 
 
 class OrderForm(forms.ModelForm):
@@ -20,7 +20,7 @@ def __init__(self, *args, **kwargs):
         'street_address1': 'Street Address 1',
         'street_address2': 'Street Address 2',
         'county': 'County',
-        'postcode': 'Postcode',        
+        'postcode': 'Postcode',     
         'phone_number': 'Phone Number',
         'email': 'Email',
     }
