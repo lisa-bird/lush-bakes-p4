@@ -32,6 +32,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
     <title>Lush Bakes{% block extra_title %}{% endblock %}</title>
@@ -70,7 +71,7 @@
                     <div class="col-lg-3 col-md-6 text-end ">
                         <ul class="list-inline list-unstyled text-center text-lg-right my-0 p-1">
                             <li class="list-inline-item dropdown">
-                                <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
+                                <a class="nav-link" href="#" id="user-options" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <div class="text-center">
                                         <div><i class="fa-regular fa-user fa-lg"></i></div>
