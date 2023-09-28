@@ -1,12 +1,20 @@
-# from django.dispatch import Signal
-# from django.dispatch import receiver
-# from checkout.signals import order_created
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 
-# order_created = Signal(providing_args=["order"])
+from .models import OrderLineItem
 
 
-# @receiver(order_created)
-# def handle_order_created(sender, **kwargs):
-#     order = kwargs.get("order")
-#     # Perform actions based on the order creation event
-#     print("New order created:", order.order_number)
+@receiver(post_save, sender=OrderLineItem)
+def update_on_save(sender, instance, created, **kwargs):
+    """
+    Update order total on lineitem update/create
+    """
+    instance.order.update_total_cost()
+
+
+@receiver(post_delete, sender=OrderLineItem)
+def update_on_delete(sender, instance, **kwargs):
+    """
+    Update order total on lineitem delete
+    """
+    instance.order.update_total_cost()

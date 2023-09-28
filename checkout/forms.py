@@ -7,8 +7,8 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('name', 'street_address1', 'street_address2',
                   'county', 'postcode', 'phone_number', 'email',)
+  
 
-        
 def __init__(self, *args, **kwargs):
     """
         Add placeholders and classes, remove auto-generated
