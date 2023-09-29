@@ -6,12 +6,14 @@ from django.conf import settings
 # from django.dispatch import Signal
 
 from products.models import Product
+from profiles.models import UserAccount
 
 # from .signals import order_created
 
 
 class Order(models.Model):
     order_number = models.CharField(max_length=25, null=False, editable=False)
+    user_account = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     name = models.CharField(max_length=50, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=False, blank=False)
