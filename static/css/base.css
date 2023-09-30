@@ -103,8 +103,10 @@ input::-webkit-inner-spin-button {
     color: #000;
     border: 1px solid #000;
 }
+
 /* ---------------Allauth styles  */
-.allauth-form-inner-content p {
+
+p.allauth-form-inner-content p {
     margin-top: 1.5rem;
     /* mt-4 */
     color: #6c757d;
@@ -159,8 +161,30 @@ input::-webkit-inner-spin-button {
     /* text-info */
 }
 
+/* --------------------profiles styling */
 
-/* fixed top navbar only on medium and up  */
+.order-history {
+    max-height: 416px;
+    overflow-y: auto;
+}
+
+#profile-update-form .form-control {
+    color: #000;
+}
+
+#profile-update-form input::placeholder {
+    color: #aab7c4;
+}
+
+#profile-update-form .form-control {
+    color: #000;
+}
+
+#profile-update-form input::placeholder {
+    color: #aab7c4;
+}
+
+/* ---------------media queries */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;

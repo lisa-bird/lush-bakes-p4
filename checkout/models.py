@@ -3,12 +3,10 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
-# from django.dispatch import Signal
+
 
 from products.models import Product
 from profiles.models import UserProfile
-
-# from .signals import order_created
 
 
 class Order(models.Model):
@@ -18,7 +16,7 @@ class Order(models.Model):
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=False, blank=False)
     county = models.CharField(max_length=25, null=False, blank=True)
-    postcode = models.CharField(max_length=10, null=False, blank=True)
+    postcode = models.CharField(max_length=10, null=False, blank=True)   
     phone_number = models.CharField(max_length=15, null=False, blank=False)
     email = models.CharField(max_length=15, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
