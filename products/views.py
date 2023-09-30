@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Lower
+
 from .models import Product, Category
+from .forms import ProductForm
 
 
 def products(request):
@@ -50,3 +52,13 @@ def product_description(request, product_id):
     }
 
     return render(request, 'products/product_description.html', context)
+
+
+def add_product(request):
+    form = ProductForm()
+
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)

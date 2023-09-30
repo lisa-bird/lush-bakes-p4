@@ -33,7 +33,7 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
-        f'This is pase confirmation for order number {order_number}.'
+        f'This is past confirmation for order number {order_number}.'
     ))
 
     template = 'checkout/checkout_complete.html'
