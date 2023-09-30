@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.db.models.functions import Lower
+from django.contrib import messages
 
 from .models import Product, Category
 from .forms import ProductForm
@@ -55,10 +56,53 @@ def product_description(request, product_id):
 
 
 def add_product(request):
-    form = ProductForm()
+    '''Page management - add bake to page'''
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Successfully added new bake!')
+            return redirect(reverse('product_description', args=[product.id]))
+        else:
+            messages.error(
+                request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        form = ProductForm()
 
     template = 'products/add_product.html'
     context = {
         'form': form,
     }
     return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    form = ProductForm(instance=product)
+    messages.info(request, f'You are editing {product.name}')
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated!')
+            return redirect(reverse('product_description', args=[product.id]))
+        else:
+            messages.error(
+                request, 'Failed to update bake. Please ensure the form is valid.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted!')
+    return redirect(reverse('products'))
