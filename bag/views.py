@@ -31,21 +31,6 @@ def add_item(request, item_id):
     return redirect(redirect_url)
 
 
-# def amend_quantity(request, item_id):
-#     if request.method == 'POST':
-#         quantity = int(request.POST.get('quantity', 0))
-#         bag = request.session.get('bag', {})
-
-#         if item_id in bag:
-#             bag[item_id] += quantity
-#             request.session['bag'] = bag
-#             return HttpResponse("Quantity amended successfully. New quantity: {}".format(bag[item_id]))
-#         else:
-#             return HttpResponseBadRequest("Item not found in the bag.")
-
-#     return HttpResponseBadRequest("Invalid request.")
-
-
 def amend_quantity(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
@@ -53,7 +38,7 @@ def amend_quantity(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
-    bag = request.session.get('bag', {})
+    bag = request.session.get('bag', {})   
 
     if size:
         if quantity > 0:
@@ -69,6 +54,7 @@ def amend_quantity(request, item_id):
             bag.pop(item_id)
 
     request.session['bag'] = bag
+    
     return redirect(reverse('view_bag'))
 
 

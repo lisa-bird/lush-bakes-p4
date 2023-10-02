@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr />
+            <h2 class="logo-font mb-4">Reviews</h2>
+            <hr />
+        </div>
+    </div>
+
+    <section>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 text-center">                
+                <p class="mb-5 pb-2 mb-md-5 pb-md-0">
+                    Here are just a some of the reviews my lovely customers have made. Please take a look at my Facebook page to read more.
+                </p>
+            </div>
+        </div>
+    
+        <div class="row text-center">
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="d-flex justify-content-center mb-4">
+                <img src="{% static 'images/cake-1.jpg' %}" alt="A carrot cake"
+                        class="rounded-circle shadow-1-strong" width="100" height="100" />
+                </div>
+                <p class=" my-3 text-muted">
+                    "I ordered a Carrot Cake from Lisa for my sons 16th birthday. Cake not only looked amazing it tasted amazing too! I would
+                    highly recommend her. Thank you x"
+                </p>
+                <p class="font-italic font-weight-normal mb-0">- Natalie Gooch</p>
+            </div>
+            <div class="col-md-3 mb-0">
+                <div class="d-flex justify-content-center mb-4">
+                    <img src="{% static 'images/cake-4.jpg' %}"
+                        class="rounded-circle shadow-1-strong" width="100" height="100" />
+                </div>
+                <p class="my-3 text-muted">
+                    "Received a beautiful cake from this lovely lady. Moist cake, delicious lemon sponge and lemon curd buttercream filling.
+                    A great hit for my mums birthday!
+                    I would definitely recommend Lush Bakes!!!"
+                </p>
+                <p class="font-italic font-weight-normal mb-0">- Susan Bliss</p>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="d-flex justify-content-center mb-4">
+                    <img src="{% static 'images/cake-3.jpg' %}" class="rounded-circle shadow-1-strong"
+                        width="100" height="100" />
+                </div>
+                <p class="my-3 text-muted">
+                    "Deluxe cupcakes for my Aunties birthday where absolutely stunning and so delicious, thank you Lisa"
+                </p>
+                <p class="font-italic font-weight-normal mb-0">- Julie Manning</p>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="d-flex justify-content-center mb-4">
+                    <img src="{% static 'images/cake-2.jpg' %}" class="rounded-circle shadow-1-strong"
+                        width="100" height="100" />
+                </div>
+                <p class="my-3 text-muted">
+                    "Ive had a couple of cakes from Lisa now and I cant imagine having them from anywhere else. They are so tasty. I high
+                    recommend Lisa to anyone. Her cakes are absolutely delicious"
+                </p>
+                <p class="font-italic font-weight-normal mb-0">- Karen Chapman</p>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+{% endblock %}
+
+

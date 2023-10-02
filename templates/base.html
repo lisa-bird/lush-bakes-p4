@@ -57,19 +57,19 @@
                     <div class="collapse navbar-collapse" id="main-nav">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="">About</a>
+                                <a class="nav-link" href="{% url 'about' %}">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'products' %}">Bakes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Reviews</a>
+                                <a class="nav-link" href="{% url 'review' %}">Reviews</a>
                             </li>
                         </ul>
                     </div>
                     <!--Account/login dropdown-->
-                    <div class="col-lg-3 col-md-6 text-end ">
-                        <ul class="list-inline list-unstyled text-center text-lg-right my-0 p-1">
+                    <div class="col-lg-3 col-md-6  text-end ">
+                        <ul class="list-inline list-unstyled text-center text-lg-right my-0 p-1 nav-item-icons">
                             <li class="list-inline-item dropdown">
                                 <a class="nav-link" href="#" id="user-options" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
@@ -97,7 +97,7 @@
                                     href="{% url 'view_bag' %}">
                                     <div class="text-center">
                                         <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
-                                        <p class="my-0">
+                                        <p class="my-0 basket-price">
                                             {% if grand_total %} £ {{ grand_total|floatformat:2 }}
                                             {% else %}
                                             £0.00
@@ -120,11 +120,42 @@
     </div>
     {% endif %} 
 
+
     {% block page_header %} 
     {% endblock %} 
 
     {% block content %} 
     {% endblock %} 
+    <footer class="bg-light text-center text-white ">
+        <!-- Grid container -->
+        <div class="container p-2 b-0">
+            <!-- Section: Social media -->
+            <section class="mb-1">
+                <!-- Facebook -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #6a92e9;" href="https://www.facebook.com/lushbakesbylisa/" target="_blank" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+    
+                <!-- Twitter -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #83c4f5;" href="https://twitter.com/" target="_blank" role="button"><i
+                        class="fab fa-twitter"></i></a>
+    
+                <!-- Google -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #db7d71;" href="https://www.google.com/" target="_blank" role="button"><i
+                        class="fab fa-google"></i></a>
+    
+                <!-- Instagram -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #b163b1;" href="https://www.instagram.com/lushbakesbylisa/" target="_blank" role="button"><i
+                        class="fab fa-instagram"></i></a>
+    
+                
+            </section>            
+        </div>   
+        <!-- Copyright -->
+        <div class="text-center p-1" style="background-color:  rgba(119, 182, 119,.5)">           
+            <p class="text-black"><small>© 2023 Copyright: Lush Bakes by Lisa</small></p>
+        </div>
+        <!-- Copyright -->
+    </footer>
     
     {% block postloadjs %} 
     <script type="text/javascript">
