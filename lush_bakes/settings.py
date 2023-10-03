@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--+=yukvwe4#5^rlj42tudl%ro^ysj_0g1*-7^uv%t2t3rwnfe-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lush-bakes.herokuapp.com]
+ALLOWED_HOSTS = ['lush-bakes-p4-3fb0d4cd2c41.herokuapp.com', 'localhost']
 
 
 # Application definition
