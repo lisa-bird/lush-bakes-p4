@@ -28,9 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['lush-bakes-p4-3fb0d4cd2c41.herokuapp.com',
-                 '8000-lisa-bird-lush-bakes-p4-3ape5c4rav.us2.codeanyapp.com',
-                 'localhost']
+ALLOWED_HOSTS = ['lush-bakes-p4-3fb0d4cd2c41.herokuapp.com','localhost']
 
 
 # Application definition
@@ -126,15 +124,16 @@ WSGI_APPLICATION = 'lush_bakes.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
