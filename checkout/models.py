@@ -37,8 +37,8 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         including delivery.        """
 
-        self.delivery_fee = self.order_total * \
-            settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.delivery_fee = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         self.grand_total = self.order_total + self.delivery_fee
         self.save()
 
@@ -46,7 +46,7 @@ class Order(models.Model):
         """
         Override the original save method to set the order number
         if it hasn't been set already.
-        """
+        """       
         if not self.order_number:
             self.order_number = self._order_number()
         super().save(*args, **kwargs)
@@ -56,13 +56,10 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False, blank=False,
-                              on_delete=models.CASCADE, related_name='lineitems')
-    product = models.ForeignKey(
-        Product, null=False, blank=False, on_delete=models.CASCADE)  
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)  
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    lineitem_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
         """
@@ -74,3 +71,4 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'pk {self.product.pk} on order {self.order.order_number}'
+
