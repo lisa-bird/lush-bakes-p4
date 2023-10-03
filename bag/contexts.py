@@ -12,7 +12,7 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
 
     for item_id, item_data in bag.items():
-        
+   
         if isinstance(item_data, int):
             quantity = item_data
         else:

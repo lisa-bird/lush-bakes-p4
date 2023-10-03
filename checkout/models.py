@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from decimal import Decimal
 
 
 from products.models import Product
@@ -37,8 +38,9 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         including delivery.        """
 
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-        self.delivery_fee = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        lineitem_total_sum = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = lineitem_total_sum if lineitem_total_sum is not None else 0
+        self.delivery_fee = self.order_total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE) / 100
         self.grand_total = self.order_total + self.delivery_fee
         self.save()
 

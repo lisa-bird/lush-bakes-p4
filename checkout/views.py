@@ -34,7 +34,9 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
+            pid = request.POST.get('client_secret')
+            if pid:
+                pid = pid.split('_secret')[0]            
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
@@ -65,7 +67,7 @@ def checkout(request):
         if not bag:
             messages.error(
                 request, "There's nothing in your bag at the moment")
-            return redirect(reverse('products'))           
+            return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
@@ -83,7 +85,7 @@ def checkout(request):
                 order_form = OrderForm(initial={
                     'name': name,
                     'email': profile.user.email,
-                    'phone_number': profile.default_phone_number,  
+                    'phone_number': profile.default_phone_number,
                     'street_address1': profile.default_street_address1,
                     'street_address2': profile.default_street_address2,
                     'county': profile.default_county,
@@ -124,7 +126,7 @@ def checkout_complete(request, order_number):
         # Save the user's info
         if save_info:
             profile_data = {
-                'default_phone_number': order.phone_number,     
+                'default_phone_number': order.phone_number,
                 'default_street_address1': order.street_address1,
                 'default_street_address2': order.street_address2,
                 'default_county': order.county,
@@ -135,7 +137,7 @@ def checkout_complete(request, order_number):
                 user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}.') 
+        Your order number is {order_number}.')
 
     if 'bag' in request.session:
         del request.session['bag']
