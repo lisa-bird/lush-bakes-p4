@@ -7,7 +7,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ['name', 'street_address1', 'street_address2',
                   'county', 'postcode', 'phone_number',]
-        widgets = {            
+        widgets = {        
             'email': forms.EmailInput(attrs={'maxlength': 15}),
         }
 
