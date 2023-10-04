@@ -51,6 +51,7 @@ class Order(models.Model):
         """       
         if not self.order_number:
             self.order_number = self._order_number()
+        self.date = timezone.now()
         super().save(*args, **kwargs)
 
     def __str__(self):
