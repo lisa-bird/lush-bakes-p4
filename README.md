@@ -48,12 +48,12 @@ Within the Lush Bakes site I have ensured that the structure and organisation of
 
 ## The Structure
 
-The website has a responsive navigation bar at the top of the page with clearly labelled pages along with a logo to navigate to the home page, shopping basket and account links. The landing page has a minamalist theme with a welcome message. The products available to buy are under the 'Bakes' page. Users can filter their specific category and then sort into price descending/ascending order if they wish. Users can read about Lush Bakes and read reviews. Social link in the footer will take the user to Lush Bakes social pages. Customers can select the bakes they wish to order, add them to the basket, amend or delete their quantity as well as see the total price of their basket. My account is where users can register, log in and view their profile.
+The website has a responsive navigation bar at the top of the page with clearly labelled pages along with a logo to navigate to the home page, shopping basket and account links. The landing page has a minimalist theme with a welcome message. The products available to buy are under the 'Bakes' page. Users can filter their specific category and then sort into price descending/ascending order if they wish. Users can read about Lush Bakes and read reviews. Social link in the footer will take the user to Lush Bakes social pages. Customers can select the bakes they wish to order, add them to the basket, amend or delete their quantity as well as see the total price of their basket. My account is where users can register, log in and view their profile.
 
 ## The Skeleton
 
 The site has a number of pages clearly labelled in the nav bar. Along with linked buttons to take users to the relevant page.
-Lush Bakes has been developed to be responsive to be able to use on small and large devices.
+Lush Bakes has been developed to be responsive enabling to use on small and large devices.
 
 [Wire Frames]()
 
@@ -61,17 +61,17 @@ Lush Bakes has been developed to be responsive to be able to use on small and la
 
 To maintain a consistent calming, light theme throughout the Lush Bakes website, pale green shades and a gradient effect have been used.
 
-I have chosen a Google font that is similar 
+The fonts I have used are:
 
 Heading Font
-![Heading Font](/flaskr/static/img/h-font.jpg)
+![Heading Font](/static/images/font-1.jpg)
 
 Body Font
-![Body Font](/flaskr/static/img/body-font.jpg)
+![Body Font](/static/images/font-2.jpg)
 
  The colours are consistent throughout the wiki.
 
-![Colour Palette](/flaskr/static/img/colour.jpg)
+![Colour Palette](/static/images/colours-green.jpg)
 
 # Features left to implement
 
@@ -83,14 +83,14 @@ To help me create this website I used these technologies:
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Materialize 1.0.0](https://materializecss.com/)
+* [Bootstrap](https://bootstrap.com/)
 * [W3Schools](https://www.w3schools.com/)
 * [Google Fonts](https://fonts.google.com/)
 * [Google Developer Tools](https://developer.chrome.com/docs/devtools/)
 * [Github](https://github.com/)
 * [W3C Markup Validation Service](https://validator.w3.org/)
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator)
-* [Flask](https://flask.palletsprojects.com/en/2.3.x/)
+* [Django](https://docs.djangoproject.com/en/4.2/)
 * [Stack Overflow](https://stackoverflow.com/)
 * [Heroku](https://heroku.com/)
 * [ElephantSQL](https://api.elephantsql.com/)
@@ -112,49 +112,7 @@ Similar to the article table with the addition of 'article_id': Foreign key refe
 
 # Testing
 
-Tests are used in web development to ensure the code works as expected.
-Tests have been created to cover:
 
-* Basic functionality testing.
-* User authentication and authorisation.
-* Data retrieval and storage.
-* Error hansdling.
-* User interface and responsiveness.
-
-The testing is comprised of unit test using Pytest and testing the whole application, simulating user interaction.
-
-1.Functionality:
-
-Verify that the home page displays correctly with the nar bar clearly showing navigation.
-Confirm that clicking on register and log in are functioning.
-Test the creating, updating, deleting and adding comments to articles.
-Counts the number of comments attached to each article.
-
-2.User Authentication:
-
-Verify that registered users can log in and access articles. Authors of articles can edit and delete their article, whereas no one else can.
-Check that unathorised users are directed to the registration page.
-Ensure that users can view all articles but only edit their own.
-
-3.Data Retrival and Storage
-
-Test fetching articles and ensure their content is correct.
-Verify that edits to articles are correctly stored in the database.
-
-4.Error Handling
-
-Test the behaviour when a user is already registered
-Test handling of incorrect password
-Test the behaviour when a user attempts to delete articles that are not their own.
-
-5.UI and responsivness
-
-Verify the responsiveness of the application on different devices and screen sizes.
-Test user interactions, input fields and button clicks.
-
-# Unit tests
-
-![Unit testing](/flaskr/static/img/unit-test.jpg)
 
 # Manual testing for my project
 

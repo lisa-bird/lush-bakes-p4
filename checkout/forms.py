@@ -8,7 +8,7 @@ class OrderForm(forms.ModelForm):
         fields = ('name', 'email', 'street_address1', 'street_address2',
                   'county', 'postcode', 'phone_number',)
         widgets = {        
-            'email': forms.EmailInput(attrs={'maxlength': 15}),
+            'email': forms.EmailInput(attrs={'maxlength': 50}),
         }
 
     def __init__(self, *args, **kwargs):
