@@ -23,7 +23,7 @@ def checkout(request):
         bag = request.session.get('bag', {})
 
         form_data = {
-            'name': request.POST['name'],
+            'name': request.POST.get('name'),
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
@@ -36,11 +36,8 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret')
-            pid = None
-
-            if client_secret:
-                pid = client_secret.split('_secret')[0]
+            client_secret = request.POST.get('client_secret')
+            pid = client_secret.split('_secret')[0] if client_secret else None
 
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
