@@ -32,20 +32,27 @@ def checkout(request):
             'email': request.POST['email'],
         }
 
+        
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
+            pid = request.POST.get('client_secret')
+            pid = None
+
+            if client_secret:
+                pid = client_secret.split('_secret')[0]
+
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
+
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        quantity=quantity,
+                        quantity=item_data,
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
@@ -105,10 +112,13 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
-        
+
     return render(request, template, context)
 
 
+            
+                
+            
 def checkout_complete(request, order_number):
     """
     Handle successful checkouts
