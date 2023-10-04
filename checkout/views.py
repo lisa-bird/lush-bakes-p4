@@ -31,17 +31,15 @@ def checkout(request):
             'phone_number': request.POST['phone_number'],
             'email': request.POST['email'],
         }
+
         order_form = OrderForm(form_data)
-        if not order_form.is_valid():
-            print(order_form.errors)
+        if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret')
-            if pid:
-                pid = pid.split('_secret')[0]            
+            pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
-            for item_id, quantity in bag.items():
+            for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
@@ -74,16 +72,15 @@ def checkout(request):
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
-        intent = None
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 name = f'{profile.user.first_name} {profile.user.last_name}'
-                intent = stripe.PaymentIntent.create(
-                    amount=stripe_total,
-                    currency=settings.STRIPE_CURRENCY,
-                )
                 order_form = OrderForm(initial={
                     'name': name,
                     'email': profile.user.email,
@@ -106,9 +103,9 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret if intent else None,
+        'client_secret': intent.client_secret,
     }
-
+        
     return render(request, template, context)
 
 
