@@ -26,9 +26,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
-ALLOWED_HOSTS = ['lush-bakes-p4-3fb0d4cd2c41.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['lush-bakes-p4-3fb0d4cd2c41.herokuapp.com',
+                 '8000-lisa-bird-lush-bakes-p4-3ape5c4rav.us2.codeanyapp.com',
+                 'localhost',]
 
 
 # Application definition

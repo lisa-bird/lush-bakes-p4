@@ -32,7 +32,8 @@ def checkout(request):
             'email': request.POST['email'],
         }
         order_form = OrderForm(form_data)
-        if order_form.is_valid():
+        if not order_form.is_valid():
+            print(order_form.errors)
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret')
             if pid:

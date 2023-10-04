@@ -3,11 +3,11 @@ html {
 }
 
 body {
-    background: rgb(233, 245, 233);
+    background: #e9f5e9;
     background: linear-gradient(90deg,
-            rgba(233, 245, 233, 1) 50%,
+            #e9f5e9 50%,
             #c7e7c7 72%,
-            rgba(179, 238, 179, 1) 93%);
+            #b3eeb3 93%);
     height: calc(100vh - 164px);
     font-family: "Prata", serif;
 }
@@ -49,7 +49,7 @@ body {
 }
 /* -------------about page */
 .about-container {            
-    background-color: rgb(232, 249, 232);
+    background-color: #e8f9e8;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
