@@ -45,7 +45,7 @@
             {% for order in orders %}
             <tr>
               <td>{{ order.order_number|truncatechars:6 }}</td>
-              <td>{{ order.date }}</td>
+              <!-- <td>{{ order.date }}</td> -->
               <td>
                 <ul class="list-unstyled">
                   {% for item in order.lineitems.all %}
