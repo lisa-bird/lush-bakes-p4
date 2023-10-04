@@ -18,9 +18,9 @@ class Order(models.Model):
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=False, blank=False)
     county = models.CharField(max_length=100, null=False, blank=True)
-    postcode = models.CharField(max_length=20, null=False, blank=True)   
+    postcode = models.CharField(max_length=20, null=False, blank=True)
     phone_number = models.CharField(max_length=15, null=False, blank=False)
-    email = models.EmailField(max_length=254, null=False, blank=False)    
+    email = models.EmailField(max_length=254, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     delivery_fee = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
@@ -49,7 +49,7 @@ class Order(models.Model):
         """
         Override the original save method to set the order number
         if it hasn't been set already.
-        """       
+        """
         if not self.order_number:
             self.order_number = self._order_number()
         super().save(*args, **kwargs)
@@ -60,7 +60,7 @@ class Order(models.Model):
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)  
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, editable=False)
 

@@ -1,8 +1,8 @@
-# Milestone Project-4 Lush Bakes
+# Milestone Project - 4 Lush Bakes
 
 ![Mock up]()
 
-[Vist my website here]()
+[Vist my website here](https://lush-bakes-p4-3fb0d4cd2c41.herokuapp.com/)
 
 Milestone Project 4 calls for a full stack site based around business logic used to control a centrally-owned dataset. I have created an e-commerce site using Django, Python, HTML, Javascript and CSS for 'Lush Bakes by Lisa'. The site will display images of bakes that allows potential customers to order a celebration bake, read reviews and login.
 
@@ -73,10 +73,6 @@ Body Font
 
 ![Colour Palette](/static/images/colours-green.jpg)
 
-# Features left to implement
-
-* Features that are left to implement include 'admin rights' and a search or filter option. Time constraints have prevented me from developing these. These may be added in the future.
-
 # Technologies Used
 
 To help me create this website I used these technologies:
@@ -84,35 +80,33 @@ To help me create this website I used these technologies:
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Bootstrap](https://bootstrap.com/)
+* [MDBootstrap](https://mdbootstrap.com/)
 * [W3Schools](https://www.w3schools.com/)
 * [Google Fonts](https://fonts.google.com/)
+* [Bootstrap](https://bootstrap.com/)
 * [Google Developer Tools](https://developer.chrome.com/docs/devtools/)
 * [Github](https://github.com/)
-* [W3C Markup Validation Service](https://validator.w3.org/)
+* [Canva Colour Palette](https://www.canva.com/colors/color-palette-generator/)
+* [Miro](https://miro.com/app/dashboard/)
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/validator)
 * [Django](https://docs.djangoproject.com/en/4.2/)
 * [Stack Overflow](https://stackoverflow.com/)
 * [Heroku](https://heroku.com/)
 * [ElephantSQL](https://api.elephantsql.com/)
 
-# Data Schema
+# Database Schema
 
-The data schema consists of tables. Each table is defined with spefic columns to store information related to users, articles and comments.
-![User table](/flaskr/static/img/table-1.jpg)
+For this project I used a PostgreSQL database for its robust features and compatability with Heroku. To obtain this I opted for ElephantSQL - a cloud based PostgreSQL service, as per the learning materials in CI.
 
-As you can see from the screenshot above the 'id' is a unique identifier for each user. The username must be unique and cannot be Null.
+![Database Schema](/static/images/database.jpg)
 
-![Article table](/flaskr/static/img/table-2.jpg)
+User Profile enables registered users to save their delivery information for future orders, the form will be pre-filled to create an improved user experience. The model has a one-to-one field that is linked to the Django Allauth user account.
 
-Again a unique 'id' for each article. 'author_id': Foreign key referencing the 'id' column of the 'user' table, defining the author of the article. 'created' The timestamp of when the article was created, cannot be Null. 'title' 'summary' 'body' all cannot be Null. 'img' A field for storing the image associated with the article.
+Order and Order line item are used in the 'Checkout' app. These are used to make purchases and make payment. Included in these are the total line price, quantity and grand total. It also contains information regarding the payment method, the Stripe PID, basket contents and checkout complete.
 
-![Comments table](/flaskr/static/img/table-3.jpg)
-
-Similar to the article table with the addition of 'article_id': Foreign key referencing the 'id' column of the article table. Identifying the article to which the comment belongs to.
+The product and category is within the 'Products' app. All products available to purchase can be individually added to the database. The products can be amended or deleted in the database by the admin user only. The category stores the different categories of bakes on offer.
 
 # Testing
-
-
 
 # Manual testing for my project
 
@@ -124,84 +118,77 @@ The project was tested on the browsers listed below:
 * Safari *v.16.6*
 * Edge *v.116.0.1938.62*
 
- When deploying the project I had some issues with Heroku. The main problem being that I did not have the correct file for Heroku to run the app. I added a run.py file to the project to include how the app runs, which solved the problem.
+During development of this website, testing has played an important part in this project, to ensure a smooth and intuitive experience for the user. I have identified and resolved various issues during development. The most significant challenge being the views for the checkout and dealing with inconsistent styling across devices. Research and utilisation of responsive design principles allowed me to overcome most issues. Addition to this I encountered problems when deploying to Heroku and database queries.
 
- During testing, once deployed, it become apparant that the users and the data being inserted into the app was not being saved. I was using SQLite for my database. Thorough reasearch led to reading Heroku's ephemeral file system makes it unsuitable for SQLite databases. Heroku's file system is read-only, and any changes made to the file system will be lost whenever the application is restarted or scaled up. I then changed my code to accomodate Postgresql, to finally get the deployment correct.
+By enduring the extensive testing I have overcome most problems.
 
-![Further testing](/flaskr/static/img/test-ex.jpg)
+![Further testing]()
 
+# Validation
+![Lighthouse](/static/images/light-house-lb.jpg)
+![Lighthouse](/static/images/light-house-1.jpg)
+![W3C CSS Validator](/static/images/css-val-lb.jpg.jpg)
 # User Stories
 
 ## User - 1
 
-First time visitor wants to understand what the purpose of the website is.
+First time visitor can intuiively navigate through the website.
+![Landing page](/static/images/lush-bakes.jpg)
 
-* Landing page shows a large heading with paragraph, clear register tab in nav.
-
-![Landing page](/flaskr/static/img/user-story-1.jpg)
-
+  Landing page shows a bakes that have been purchased, clearly shows navigation and icons for account and basket.
 ## User - 2
 
-First time visitor wants to be able to see some articles before they register. Articles are visible but user can not read them or add new article without registering and logging in.
+I am new to online shopping. will I know when I have made an order or added an item to the bag.
 
-![Landing page](/flaskr/static/img/user-story-2.jpg)
+![Landing page](/static/images/completed-order.jpg)
 
+User will see confirmation of order view. Along with this a toast message will pop up when a user registers, places an item in bag.
 ## User - 3
 
-First time visitor has registered and logged in. They can add an article and read the existing articles, commenting if they wish.
+A regular customer does not have a desktop computer or laptop, can the site be viewed on modile devices.
 
-![User-3](/flaskr/static/img/user-story-3.jpg)
+![User-3](/static/images/mobile.jpg)
 
+Lush Bakes is fully responsive
 ## User - 4
 
-The author of an article wants to update the information. This can only be done by the author, the edit button will be visible, taking the user to the correct view. The user can also delete the article form here.
+As a first time user can I sort the products by price order.
 
-![User-4](/flaskr/static/img/user-story-4a.jpg)
+![User-4](/static/images/sort.jpg)
 
 ## User - 5
 
-First time visitor wants to be able to read the full article and see when it was posted and by whom
+As a user, can I clearly see what I have added to my basket. If I change my mind can I delete it or amend the quantity.
 
-![User-5](/flaskr/static/img/user-story-5.jpg)
+![User-5](/static/images/basket-1.jpg)
+Users can change the quantity of their item, or/and delete the item without leaving the basket page.
 
 ## User - 6
 
-First time users and existing users want to be able to comment on articles, developing a community. The comment button takes them to the comment view.
+As the owner can I amend products or delete products
 
-![User-6](/flaskr/static/img/user-story-6.jpg)
+![User-6](/static/images/admin-1.jpg)
+![User-6](/static/images/amend-1.jpg)
 
-## User - 7
+# User - 7
 
-First time users and existing users want to delete the article they have posted.
+As the owner can I view orders in the database and change if needed.
 
-![User-7](/flaskr/static/img/user-story-7.jpg)
-
-# Validation
-
-CSS
-
-All CSS was passed through the W3C CSS Validation Service, no errors reported
-![CSS](/flaskr/static/img/css-val1.jpg)
-
-Lighthouse
-![Lighthouse](/flaskr/static/img/lighthouse.jpg)
-
-Pep8
-
-All code is Pep8 compliant, no errors. [Pep8](https://peps.python.org/pep-0008/)
+![User-6](/static/images/database-1.jpg)
 
 # Deployment
 
-As part of the criteria for this project, the Barbie Wiki has to be deployed to Heroku.
+As part of the criteria for this project, Lush Bakes has to be deployed to Heroku.
 
 To do this the following must be completed:
 
 1. Create a requirements.txt file so Heroku can install the required dependencies to run the app. This can be done by typing in the terminal.
+
    * pip3 freeze --local > requirements.txt
 
 2. Create a Procfile to tell Heroku what type of application is being deployed and how to run it.
 
-   * echo web: python run.py > Procfile
+   * web: gunicorn lush_bakes.wsgi:application
 
 3. Sign up and create a Heroku account.
 
@@ -210,11 +197,28 @@ To do this the following must be completed:
 5. Make your way to the Deploy tab. Select 'Connect to Github' for the deployment method. Select your correct repository and connect to it.
 
 6. Before you click deploy, go to the Settings tab, click on the Reveal Config Vars tab to configure environmental variables. Insert the following
-   * IP:  0,0,0,0
-   * PORT:  5000
-   * DATABASE_NAME:  *Your db name*
+   * DATABASE_URL: taken from ElephantSQL
    * SECRET_KEY:  *Your own secret key*
+   * STRIPE_PUBLIC_KEY: *Your own public key from Stripe*
+   * STRIPE_SECRET_KEY: *Your own secret key from Stripe*
+   * AWS_ACCESS_KEY_ID: *Your own access key from AWS*
+   * AWS_SECRET_ACCESS_KEY: *Your own secret access key from AWS*
+   * USE_AWS: True
 
 7. Go back to the Deployment tab and select 'Deploy Branch'
 
 8. You app should now be deployed.
+
+## Stripe Payment
+
+To make a payment using the Stripe test method use the card details from the documentation on Stripe site.
+
+Use card number:
+
+* 4242 4242 4242 4242
+
+Use a valid future date:
+
+* such as 24/24.
+
+* any 3 digits for the CVC.
