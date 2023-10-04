@@ -5,8 +5,11 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('name', 'street_address1', 'street_address2',
-                  'county', 'postcode', 'phone_number', 'email',)
+        fields = ['name', 'street_address1', 'street_address2',
+                  'county', 'postcode', 'phone_number',]
+        widgets = {            
+            'email': forms.EmailInput(attrs={'maxlength': 15}),
+        }
 
     def __init__(self, *args, **kwargs):
         """
@@ -19,7 +22,7 @@ class OrderForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'county': 'County',
-            'postcode': 'Postcode',   
+            'postcode': 'Postcode',
             'phone_number': 'Phone Number',
             'email': 'Email',
         }
