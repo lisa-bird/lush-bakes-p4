@@ -31,7 +31,7 @@ class Order(models.Model):
 
     def _order_number(self):
         '''Generates a unique order number'''
-     
+      
         temp = uuid.uuid4().hex.upper()
         return temp[:15]
 

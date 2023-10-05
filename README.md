@@ -1,6 +1,6 @@
 # Milestone Project - 4 Lush Bakes
 
-![Mock up]()
+![Mock up](/static/images/lush-bakes2.jpg)
 
 [Vist my website here](https://lush-bakes-p4-3fb0d4cd2c41.herokuapp.com/)
 
@@ -17,7 +17,7 @@ The primary objective of the Lush Bakes website is to provide an online shopping
 
 ## Audience
 
-The audience will include mostly females, between the ages of 25 - 55.
+The audience will include mostly females, between the ages of 25 - 55 years old.
 
 # UX
 
@@ -55,7 +55,7 @@ The website has a responsive navigation bar at the top of the page with clearly 
 The site has a number of pages clearly labelled in the nav bar. Along with linked buttons to take users to the relevant page.
 Lush Bakes has been developed to be responsive enabling to use on small and large devices.
 
-[Wire Frames]()
+[Wire Frames](https://www.figma.com/file/FtibXgYxE2pH17326B7Cy9/Untitled?type=design&mode=design&t=aKIQ1UloLgZMglsu-1)
 
 ## The Surface
 
@@ -108,7 +108,7 @@ The product and category is within the 'Products' app. All products available to
 
 # Testing
 
-# Manual testing for my project
+# Manual testing
 
 The project was tested on the browsers listed below:
 
@@ -118,16 +118,32 @@ The project was tested on the browsers listed below:
 * Safari *v.16.6*
 * Edge *v.116.0.1938.62*
 
-During development of this website, testing has played an important part in this project, to ensure a smooth and intuitive experience for the user. I have identified and resolved various issues during development. The most significant challenge being the views for the checkout and dealing with inconsistent styling across devices. Research and utilisation of responsive design principles allowed me to overcome most issues. Addition to this I encountered problems when deploying to Heroku and database queries.
+During development of this website, testing has played an important part in this project, to ensure a smooth and intuitive experience for the user. I have identified and resolved various issues during development. The most significant challenge being the views for the checkout and dealing with inconsistent styling across devices. Research and utilisation of responsive design principles allowed me to overcome most issues. In addition to this I encountered problems when deploying to Heroku and database queries.
 
-By enduring the extensive testing I have overcome most problems.
+When the website was ready for deploying to Heroku, with no errors and all links working as expected. I attempted to deploy the site, using ElephantSQL for my database. The build was successful with the site rendering as it should. During testing, I was able to, create an account, view the bakes and add to the basket, enter the personal details, enter the Stripe payment but when I clicked 'complete order' I encountered a server error.
 
-![Further testing]()
+Upon changing to development mode, the details of the error was evident. 'Data error: value too long for type character varying(15)'. With this information I changed the email field in the, 'Checkout'/Order class, to max_length=254, and migrated the chang, pushing to Git.
+
+![Models](/static/images/email-bug.jpg)
+![Migration](/static/images/migration.jpg)
+
+To fix this bug temporarily I added this to the '_order_number' method, to only return the first 15 characters of the generated unique identifier.
+
+![Save](/static/images/save.jpg)
+![Save](/static/images/elephantsql.jpg)
+
+I have now got to the bottom of the issue. The database schema was altered after I had created the database in ElephantSQL. Therefore, the altered schema was not migrated in ElephantSQL and not updating in Heroku. Due to time constraints I can not implement this issue, this will be done in version 1a.
+
+# Further Testing
+
+![Further testing](/static/images/testing-lb.jpg)
 
 # Validation
+
 ![Lighthouse](/static/images/light-house-lb.jpg)
 ![Lighthouse](/static/images/light-house-1.jpg)
-![W3C CSS Validator](/static/images/css-val-lb.jpg.jpg)
+![W3C CSS Validator](/static/images/css-val-lb.jpg)
+
 # User Stories
 
 ## User - 1
@@ -222,3 +238,9 @@ Use a valid future date:
 * such as 24/24.
 
 * any 3 digits for the CVC.
+
+* any 5 digits for the zip.
+
+# Credits
+
+Thank you to Nigel Edwards who has supported me throughout this course.
