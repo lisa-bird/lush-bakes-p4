@@ -31,8 +31,9 @@ class Order(models.Model):
 
     def _order_number(self):
         '''Generates a unique order number'''
-
-        return uuid.uuid4().hex.upper()
+        
+        temp = uuid.uuid4().hex.upper()
+        return temp[:15]
 
     def update_total_cost(self):
         """
